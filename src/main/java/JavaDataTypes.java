@@ -1,9 +1,10 @@
 /*public class JavaDataTypes {
 }
 https://www.hackerrank.com/challenges/java-datatypes/problem?isFullScreen=true
-Not finished, partially working.
- */
+5-7-25 Not finished, partially working.
+5-8-25 Output correct, except last input of 10^13 not reading as a long.
 
+ */
 import java.util.*;
 import java.io.*;
 
@@ -18,34 +19,28 @@ class Solution{
 
         for (int i = 0; i < T; i++){
             try{
-                Integer n = scanner.nextInt();
+                Integer n  = scanner.nextInt();
 
-                if(T < Math.pow(-2, 63) && T > ((Math.pow(2, 63))-1)){
-                    System.out.println(T +" can't be fitted anywhere");
-                } else {
-                    System.out.println(T + " can betted in:");
-                }
+                System.out.println(n + " can be fitted in:");
 
-                if(T >= -128 && T <= 127){
+                if(n >= -128 && n <= 127){
                     System.out.println("* byte");
                 }
 
-                if(T >= -32768 && T <= 32767){
+                if(n >= -32768 && n <= 32767){
                     System.out.println("* short");
                 }
 
-                if(T >= -2147483648 && T <= 2147483647){
+                if(n >= -2147483648 && n <= 2147483647){
                     System.out.println("* int");
                 }
 
-                if(T >= Math.pow(-2, 63) && T <= ((Math.pow(2, 63))-1)){
+                if(n > Math.pow(-2, 63) && n < ((Math.pow(2, 63))-1)){
                     System.out.println("* long");
                 }
             }  catch (Exception e) {
-                System.out.println(scanner.next() + " can't be fitted anywhere");
+                System.out.println(scanner.next() + " can't be fitted anywhere.");
             }
         }
     }
 }
-
-
