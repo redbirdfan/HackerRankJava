@@ -2,8 +2,9 @@ public class JavaLoopsII {
     /*problem link https://www.hackerrank.com/challenges/java-loops/problem?isFullScreen=true//
     5-13-25 still working through
     5-16-25 First 2 test cases are passing.  3, 4, and 5 are not.  Will have to continue to work through.
+    5-21-25 I was reading that the loop involved an exponent and I was super wrong.  Was messing every total up as a result
+            Made it more difficult that it was.  We are complete, correct answer listed.
      */
-
 
 import java.io.*;
 import java.util.*;
@@ -19,19 +20,19 @@ import java.util.*;
             for (int i = 0; i < z; i++){
 
                 int a = scanner.nextInt();
+
                 int b = scanner.nextInt();
+
                 int n = scanner.nextInt();
-                int power = 0;
-                int total = (int) (a + Math.pow(2, power) * b);
-                System.out.print(total + " ");
 
-                for(int j = 1; j < n ; j++){
+                a = a + 1 * b;
 
-                    power = j;
 
-                    int addOn = (int) Math.pow(2, power) * b;
-                    total = (total + addOn);
-                    System.out.print(total+ " ");
+
+                for(int j = 0; j < n ; j++){
+                    System.out.print(a + " ");
+                    b = 2 * b;
+                    a = a + b;
 
                     if(j == n-1){
                         System.out.println();
@@ -41,3 +42,4 @@ import java.util.*;
             }
         }
     }
+
