@@ -4,6 +4,7 @@ public class JavaSubstring {
 //https://www.hackerrank.com/challenges/java-string-compare/problem?isFullScreen=true
 
 //6-23-25 working correctly, except the first and last index are being returned as arrays.
+//6-24-35 Correction made by using index methods for lists.
 
 import java.io.*;
 import java.util.*;
@@ -22,12 +23,14 @@ public class Solution {
             String cutString = a.substring(i, i+b);
             subArray.add(cutString);
         }
+
         Collections.sort(subArray);
         int listlength = subArray.size();
-        String first = subArray.subList(0,1).toString();
-        String last = subArray.subList(listlength-1, listlength).toString();
-        System.out.println(first);
-        System.out.println(last);
+        int endList = listlength-1;
+        String firstList = subArray.get(0);
+        String lastList = subArray.get(endList);
+        System.out.println(firstList);
+        System.out.println(lastList);
     }
 }
 
