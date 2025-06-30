@@ -3,6 +3,10 @@ public class ValidUserName {
     //reading as should for valid and invalid.  @ system in an username seems to be tripping it up.
     //Now able to get starting character _ to read as invalid or the @ symbol in the name to read invalid
     //but not both.
+    //Created a validUser boolean to give each validation a trigger.  got all but 1 test to pass, needed to use nextLine()
+    //instead of just next() to ensure full longer usernames were being being fully acceptable to check.
+    // complete 6-29-25
+
 
 import java.io.*;
 import java.util.*;
@@ -15,45 +19,42 @@ import java.util.*;
             Scanner scanner = new Scanner(System.in);
 
             int numNames = scanner.nextInt();
+            scanner.nextLine();
 
             String lower = "abcdefghijklmnopqrstuvwxyz";
             String upper = lower.toUpperCase();
             String notLetters = "0123456789_";
             String firstLetterAcceptable = lower + upper;
             String allAcceptable = (lower+upper+notLetters);
-            String unacceptable = "!@#$%)(*&^,./;'][=+|:<>?";
 
-            for(int i = 0; i < numNames; i++){
+            for(int a = 1; a < numNames+1; a++){
+                Boolean validUser = true;
+                String name = scanner.nextLine();
 
-                String name = scanner.next();
-                char[] nameCharArray = name.toCharArray();
-                char firstLetter = name.charAt(0);
+                if(name.length()< 8 || name.length() > 30){
+                    validUser = false;
+                }
 
-                String firstChar = Character.toString(firstLetter);
-                ArrayList<String> nameArray = new ArrayList<String>();
+                if(name.length()>0 && !firstLetterAcceptable.contains(name.substring(0,1))){
+                    validUser = false;
+                }
 
-                for(int j = 0 ; j < name.length(); j++){
-                    char c = name.charAt(j);
-                    String c2 = Character.toString(c);
-                    if(unacceptable.contains(c2)){
-                        System.out.println("Invalid");
+                if(validUser){
+                    for(int i = 0 ; i < name.length(); i++){
+                        String nameLetter = name.substring(i, i+1);
+                        if(!allAcceptable.contains(nameLetter)){
+                            validUser = false;
+                            break;
+                        }
                     }
-                    nameArray.add(c2);
                 }
 
 
-
-
-                if(name.length() < 8 || name.length() > 30){
-                    System.out.println("Invalid");
-                } else if(!firstLetterAcceptable.contains(firstChar) || unacceptable.contains(firstChar)){
-                    System.out.println("Invalid");
-
-                } else {
+                if(validUser == true){
                     System.out.println("Valid");
+                }else{
+                    System.out.println("Invalid");
                 }
-
             }
         }
-
     }
